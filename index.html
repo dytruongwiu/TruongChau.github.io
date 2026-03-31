@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trường ❤️ Châu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  font-family: 'Montserrat', sans-serif;
+  background:black;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* PASSWORD */
+#lock {
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:999;
+}
+
+#lock input {
+  padding:12px;
+  border:none;
+  text-align:center;
+  border-radius:5px;
+}
+
+#lock button {
+  margin-top:10px;
+  padding:10px 20px;
+  cursor:pointer;
+}
+
+/* HERO CINEMATIC */
+.hero {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.8), black),
+  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+  background-size:cover;
+  background-position:center;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size:42px;
+}
+
+.fade {
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* SECTION */
+section {
+  padding:70px 20px;
+  text-align:center;
+}
+
+/* TIMELINE */
+.timeline div {
+  margin:25px 0;
+  opacity:0.8;
+}
+
+/* GALLERY GRID */
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+  gap:10px;
+}
+
+.gallery img {
+  width:100%;
+  border-radius:12px;
+  transition:0.4s;
+}
+
+.gallery img:hover {
+  transform:scale(1.05);
+}
+
+/* SLIDER */
+.slider {
+  display:flex;
+  overflow-x:auto;
+  gap:10px;
+}
+
+.slider img {
+  height:200px;
+  border-radius:10px;
+}
+
+/* HEART EFFECT */
+.heart {
+  position:fixed;
+  color:#ff4d6d;
+  animation:float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {transform:translateY(0);}
+  100% {transform:translateY(-100vh);}
+}
+
+/* TEXT STYLE */
+.quote {
+  font-style:italic;
+  opacity:0.8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<div id="lock">
+  <h2>Chỉ dành cho Anh & Bé 💌</h2>
+  <input id="pass" type="password" placeholder="Nhập mật khẩu">
+  <button onclick="check()">Vào</button>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 class="fade">Nguyễn Duy Trường ❤️ Trần Hà Bảo Châu</h1>
+  <p class="fade quote">“Ngày qua ngày chúng ta yêu nhau nhiều hơn...”</p>
+  <h2 id="days" class="fade"></h2>
+</div>
+
+<!-- MESSAGE -->
+<section>
+  <p class="fade">
+    Cảm ơn vì chúng ta đã gặp nhau.<br><br>
+    Cho anh được yêu em, cho em được yêu anh.<br><br>
+    Và luôn là điểm tựa mỗi khi một trong hai mất phương hướng.<br><br>
+    Mong rằng chúng ta sẽ luôn hạnh phúc,<br>
+    luôn ở bên nhau,<br>
+    cùng nhau trở thành phiên bản tốt hơn,<br>
+    và quan trọng nhất… là luôn lắng nghe nhau 💖
+  </p>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline">
+  <h2 class="fade">Hành trình của chúng ta</h2>
+  <div class="fade">16/03/2024 – Điện Biên, Quảng trường 7/5</div>
+  <div class="fade">15/04/2024 – Bắt đầu yêu ❤️</div>
+  <div class="fade">24/06/2025 – Cô Tô 🌊</div>
+</section>
+
+<!-- SLIDER -->
+<section>
+  <h2 class="fade">Khoảnh khắc</h2>
+  <div class="slider">
+    <img src="https://via.placeholder.com/300">
+    <img src="https://via.placeholder.com/300">
+    <img src="https://via.placeholder.com/300">
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <h2 class="fade">Ký ức</h2>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/300">
+    <img src="https://via.placeholder.com/300">
+    <img src="https://via.placeholder.com/300">
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section>
+  <h2 class="fade">Video</h2>
+  <iframe width="300" height="200"
+    src="https://www.youtube.com/embed/"
+    frameborder="0" allowfullscreen>
+  </iframe>
+</section>
+
+<!-- ENDING -->
+<section>
+  <h2 class="fade">“Và hành trình này… vẫn đang tiếp tục.”</h2>
+</section>
+
+<!-- MUSIC -->
+<div onclick="playMusic()" style="position:fixed;bottom:20px;right:20px;background:white;color:black;padding:10px;border-radius:50%;cursor:pointer;z-index:999;">
+🎵
+</div>
+
+<iframe id="ytmusic" width="0" height="0"
+src=""
+frameborder="0"
+allow="autoplay">
+</iframe>
+  function playMusic(){
+  document.getElementById("ytmusic").src =
+  "https://www.youtube.com/embed/U1usrHw-GvI?autoplay=1&loop=1&playlist=U1usrHw-GvI";
+}
+
+<script>
+// PASSWORD
+function check(){
+  if(document.getElementById("pass").value === "TruongChau1504"){
+    document.getElementById("lock").style.display="none";
+    document.getElementById("music").play();
+  } else {
+    alert("Sai rồi 😏");
+  }
+}
+
+// COUNT DAY
+const start = new Date("2024-04-15");
+const now = new Date();
+const days = Math.floor((now - start)/(1000*60*60*24));
+document.getElementById("days").innerText = days + " ngày bên nhau";
+
+// SCROLL EFFECT
+const faders = document.querySelectorAll('.fade');
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 50){
+      el.classList.add('show');
+    }
+  });
+});
+
+// HEART
+setInterval(()=>{
+  let heart = document.createElement("div");
+  heart.className="heart";
+  heart.innerText="💖";
+  heart.style.left=Math.random()*100+"vw";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},800);
+</script>
+
+</body>
+</html>
